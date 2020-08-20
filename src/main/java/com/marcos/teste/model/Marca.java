@@ -1,11 +1,19 @@
 package com.marcos.teste.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+
+
+
 
 @Entity
 public class Marca implements Serializable{
@@ -14,7 +22,12 @@ public class Marca implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer marcaId;
+	
+	@Column(nullable = false, unique = true)
 	private String nomeMarca;
+	
+	@OneToMany(mappedBy = "marca")
+	private List<Patrimonio> patrimonios = new ArrayList<>();
 	
 	public Marca() {
 		
@@ -47,7 +60,6 @@ public class Marca implements Serializable{
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((marcaId == null) ? 0 : marcaId.hashCode());
-		result = prime * result + ((nomeMarca == null) ? 0 : nomeMarca.hashCode());
 		return result;
 	}
 
@@ -65,13 +77,10 @@ public class Marca implements Serializable{
 				return false;
 		} else if (!marcaId.equals(other.marcaId))
 			return false;
-		if (nomeMarca == null) {
-			if (other.nomeMarca != null)
-				return false;
-		} else if (!nomeMarca.equals(other.nomeMarca))
-			return false;
 		return true;
 	}
+
+	
 	
 	
 
