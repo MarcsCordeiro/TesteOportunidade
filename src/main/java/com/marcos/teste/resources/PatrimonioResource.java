@@ -41,7 +41,7 @@ public class PatrimonioResource {
 		return ResponseEntity.created(uri).build();
 	}
 
-	@RequestMapping(method = RequestMethod.PUT)
+	@RequestMapping(value = "/{id}",method = RequestMethod.PUT)
 	public ResponseEntity<Void> update(@RequestBody Patrimonio obj, @PathVariable Integer id){
 		obj = pase.update(obj);
 		return ResponseEntity.noContent().build();

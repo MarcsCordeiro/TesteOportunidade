@@ -32,7 +32,6 @@ public class PatrimonioService {
 	}
 	
 	public Patrimonio update(Patrimonio obj) {
-		find(obj.getId()); //Verifica se dado está na lista, se não está lança a exeção
 		return pare.save(obj);
 	}
 	
