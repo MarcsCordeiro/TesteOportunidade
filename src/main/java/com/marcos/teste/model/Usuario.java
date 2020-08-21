@@ -1,12 +1,21 @@
 package com.marcos.teste.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
 
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.marcos.teste.model.enuns.Perfil;
 
 @Entity
 public class Usuario implements Serializable{
@@ -20,19 +29,28 @@ public class Usuario implements Serializable{
 	private String nome;
 	@Column(nullable = false, unique = true)
 	private String email;
+	@JsonIgnore
 	@Column(nullable = false)
 	private String senha;
 	
+	@ElementCollection(fetch = FetchType.EAGER)
+	@CollectionTable(name="PERFIS")
+	private Set<Integer> perfis = new HashSet<>();
+	
+	
 	public Usuario() {
-		
+		addPerfil(Perfil.USUARIO);
 	}
+		
+	
 	
 	public Usuario(Integer id, String nome, String email, String senha) {
-		super();
+		
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
 		this.senha = senha;
+		addPerfil(Perfil.USUARIO);
 	}
 	
 	
@@ -59,6 +77,14 @@ public class Usuario implements Serializable{
 	}
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+	
+	public Set<Perfil> getPerfis() {
+		return perfis.stream().map(x -> Perfil.toEnum(x)).collect(Collectors.toSet());
+	}
+	
+	public void addPerfil(Perfil perfil) {
+		perfis.add(perfil.getCod());
 	}
 
 	@Override

@@ -4,22 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import javax.validation.ConstraintValidatorContext;
-
-import org.apache.logging.log4j.message.FormattedMessage;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.marcos.teste.dto.UsuarioDTO;
 import com.marcos.teste.model.Usuario;
 import com.marcos.teste.repositories.UsuarioRepository;
+import com.marcos.teste.resources.exception.FieldMessage;
 import com.marcos.teste.service.exceptions.ObjectNotFoundException;
-
-import net.bytebuddy.description.modifier.FieldManifestation;
-import net.bytebuddy.implementation.bind.annotation.FieldValue;
 
 @Service
 public class UsuarioService {
+	
+	@Autowired
+	private BCryptPasswordEncoder pe;
 	
 	@Autowired
 	private UsuarioRepository usre;
@@ -44,9 +43,11 @@ public class UsuarioService {
 		return usre.findAll();
 	}
 	
+	
+	
 	//Método para PatrimonioResource para findAll
 	public Usuario usuariDTO(UsuarioDTO objDTO) {
-		return new Usuario(objDTO.getId(),objDTO.getNome(),objDTO.getEmail(),objDTO.getSenha());
+		return new Usuario(objDTO.getId(),objDTO.getNome(),objDTO.getEmail(),pe.encode(objDTO.getSenha()));
 	}
 	
 	
