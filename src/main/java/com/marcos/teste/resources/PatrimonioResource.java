@@ -26,7 +26,7 @@ public class PatrimonioResource {
 
 	@Autowired
 	private PatrimonioService pase;
-	
+	@PreAuthorize("hasAnyRole('USUARIO')")
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<?> find(@PathVariable Integer id){
 		
@@ -49,7 +49,7 @@ public class PatrimonioResource {
 		return ResponseEntity.noContent().build();
 	}
 	
-	
+	@PreAuthorize("hasAnyRole('USUARIO')")
 	@RequestMapping( method = RequestMethod.GET)
 	public ResponseEntity<List<PatrimonioDTO>> findAll() {
 		List<Patrimonio> listar = pase.findAll();

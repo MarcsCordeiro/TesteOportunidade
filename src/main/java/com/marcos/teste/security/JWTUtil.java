@@ -22,7 +22,7 @@ public class JWTUtil {
 	public String generateToken(String username) {
 		return Jwts.builder()
 				.setSubject(username)
-				.setExpiration(new Date(System.currentTimeMillis() + expiration))
+				.setExpiration(new Date(System.currentTimeMillis() + expiration * 1000))
 				.signWith(SignatureAlgorithm.HS512, secret.getBytes())
 				.compact();
 	}
@@ -31,7 +31,7 @@ public class JWTUtil {
 		Claims claims = GetClaims(token); 
 		if(claims != null) {
 			String username = claims.getSubject();
-			Date expirationDate = (Date) claims.getExpiration();
+			java.util.Date expirationDate = claims.getExpiration();
 			Date now = new Date(System.currentTimeMillis());
 			if(username != null && expirationDate != null && now.before(expirationDate)){
 				return true;
@@ -39,7 +39,7 @@ public class JWTUtil {
 		}
 		return false;
 	}
-	
+		
 	public String getUsername(String token) {
 		Claims claims = GetClaims(token); 
 		if(claims != null) {

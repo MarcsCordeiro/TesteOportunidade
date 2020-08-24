@@ -44,7 +44,7 @@ public class DBservice {
 		Usuario us1 = new Usuario(null, "Marcos", "marcos@marcos.com",pe.encode("455mama"));
 		us1.addPerfil(Perfil.USUARIO);
 		Usuario us2 = new Usuario(null, "Dani", "dani@daniele.com", pe.encode("6262dd"));
-		us2.addPerfil(Perfil.ADMIN);
+		
 		
 		usuarioRepository.saveAll(Arrays.asList(us1,us2));
 		
