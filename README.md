@@ -5,11 +5,23 @@
 ##     Com Classes:
 #### Marca
 ````````
-#####MarcaId
-#####NomeMarca
+MarcaId
+NomeMarca
 ````````
 ### EndPoints de Marca PUT-GET-POST
-#####[Build] (localhost:8080/marcas)
-#####[Build] (localhost:8080/marcas/{id})
-
--[]Patrimonio
+````````
+(localhost:**/marcas)
+(localhost:**/marcas/**)
+````````
+####Patrimonio
+````````
+Nome
+MarcaId
+Descrição
+Nº do tombo
+````````
+### EndPoints de Marca PUT-GET-POST
+````````
+(localhost:**/patrimonios)
+(localhost:**/patrimonios/**)
+````````
