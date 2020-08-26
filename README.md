@@ -37,3 +37,8 @@ Senha
 (localhost:**/usuarios/**)
 (localhost:**/usuarios/login) Para entra no sistema
 ````````
+
+###Projeto:
+-Java 8
+-Padrão MVC
+-Token JWT
