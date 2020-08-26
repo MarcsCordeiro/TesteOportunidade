@@ -39,6 +39,6 @@ Senha
 ````````
 
 ###Projeto:
--Java 8
--Padrão MVC
--Token JWT
+*Java 8
+*Padrão MVC
+*Token JWT
