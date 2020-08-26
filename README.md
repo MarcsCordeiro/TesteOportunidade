@@ -13,7 +13,7 @@ NomeMarca
 (localhost:**/marcas)
 (localhost:**/marcas/**)
 ````````
-####Patrimonio
+###Patrimonio
 ````````
 Nome
 MarcaId
@@ -25,7 +25,7 @@ Nº do tombo
 (localhost:**/patrimonios)
 (localhost:**/patrimonios/**)
 ````````
-####Usuario
+###Usuario
 ````````
 Nome
 Email
