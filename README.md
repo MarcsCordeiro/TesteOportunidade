@@ -25,3 +25,15 @@ Nº do tombo
 (localhost:**/patrimonios)
 (localhost:**/patrimonios/**)
 ````````
+####Usuario
+````````
+Nome
+Email
+Senha
+````````
+### EndPoints de Marca PUT-GET- (POST - Está com acesso livre para cadastro de novos usuários) 
+````````
+(localhost:**/usuarios)
+(localhost:**/usuarios/**)
+(localhost:**/usuarios/login) Para entra no sistema
+````````
